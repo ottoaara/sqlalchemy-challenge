@@ -30,10 +30,12 @@ app = Flask(__name__)
 # Flask Routes
 #################################################
 
+#Home page route
 @app.route("/")
 def home():
     return "Welcome to the Home Page"
 
+#rain page route
 @app.route("/api/v1.0/precipitation")
 def precipitation():
     # Perform a query to retrieve the last 12 months of precipitation data
@@ -48,6 +50,7 @@ def precipitation():
 
     return jsonify(precipitation_data)
 
+#stations page route
 @app.route("/api/v1.0/stations")
 def stations():
     # Perform a query to retrieve the stations
@@ -60,6 +63,7 @@ def stations():
 
     return jsonify(stations_dict)
 
+# temps page route
 @app.route("/api/v1.0/tobs")
 def tobs():
     # Perform a query to retrieve the temperature observations for the most active station
@@ -75,6 +79,7 @@ def tobs():
 
     return jsonify(tobs_data)
 
+#start route -dynamic
 @app.route("/api/v1.0/<start>")
 def start(start):
     # Perform a query to retrieve the minimum, average, and maximum temperature for a given start date
@@ -90,6 +95,7 @@ def start(start):
 
     return jsonify(temperature_stats)
 
+#start end - dynamic route
 @app.route("/api/v1.0/<start>/<end>")
 def start_end(start, end):
     # Perform a query to retrieve the minimum, average, and maximum temperature for a given start-end range
